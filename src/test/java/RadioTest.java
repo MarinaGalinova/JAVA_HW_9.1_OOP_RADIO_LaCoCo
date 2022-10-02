@@ -125,6 +125,56 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void shouldGetRightVolumeIfNegative() {
+
+        Radio station = new Radio();
+        station.setCurrentVolume(-1);
+
+        int expected = 0;
+        int actual = station.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGetRightVolumeIfOver10() {
+
+        Radio station = new Radio();
+        station.setCurrentVolume(11);
+
+        int expected = 0;
+        int actual = station.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldIncreaseVolume() {
+
+        Radio station = new Radio();
+        station.setCurrentVolume(5);
+        station.increaseVolume();
+
+        int expected = 6;
+        int actual = station.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldDecreaseVolume() {
+
+        Radio station = new Radio();
+        station.setCurrentVolume(5);
+        station.decreaseVolume();
+
+        int expected = 4;
+        int actual = station.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
 }
 
 //@Test
