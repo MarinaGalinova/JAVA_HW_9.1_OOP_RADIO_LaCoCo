@@ -3,110 +3,77 @@ package ru.netology.javaqamvn;
 public class Radio {
     private int currentNumber;
     private int currentVolume;
-    private int size = 10; //количество радиостанций (номера станций с нуля начинаются, так что последний номер будет size - 1
-    private int maxNumber; //переменная максимального номера радиостанции, начинаются с нуля
-    public Radio() { // пустой конструктор
+    private int size = 10;
+    private int maxNumber;
+
+    public Radio() {
     }
-    public Radio(int size) { // конструктор, принимает количество радиостанций
+
+    public Radio(int size) {
         this.size = size;
     }
-    public int getMaxNumber() {   //геттер максимального номера станции
-        return maxNumber = size - 1;
-    }
-    public int getCurrentSize() {   //геттер текущего количества радиостанций
-        return size;
+
+    public int getMaxNumber() {
+        return this.maxNumber = this.size - 1;
     }
 
-    public int getCurrentNumber() {   //геттер текущего номера станции, возвращает номер текущей станции
-        return currentNumber;
+    public int getCurrentSize() {
+        return this.size;
     }
 
-    public int getCurrentVolume() {  //геттер текущего уровня громкости, возвращает уровень текущей громкости
-        return currentVolume;
+    public int getCurrentNumber() {
+        return this.currentNumber;
     }
 
-    public void setCurrentNumber(int newCurrentNumber) {  //сеттер текущего номера, для ввода вручную номера стации. Принимает на вход переменную newCurrentNumber.
-        // Так как диапазон номеров радиостанции от 0 до size - 1 (так как номера станций с нуля), то при вводе отрицательного значения вернется 0? при вводе значения больше size - 1 вернется 0? Если вводится номер
-        //станции от 0 до size -1 включительно, то он присваивается переменной currentNumber
-
-        if (newCurrentNumber < 0) {
-            return;
-        }
-        if (newCurrentNumber > getMaxNumber()) {
-            return;
-        }
-        currentNumber = newCurrentNumber;
+    public int getCurrentVolume() {
+        return this.currentVolume;
     }
 
-    public void setCurrentVolume(int newCurrentVolume) { //сеттер текущего уровня громкости, для ввода вручную уровня громкости. Принимает на вход переменную newCurrentVolume.
-        // Так как диапазон громкости радио от 0 до 100, то при вводе отрицательного значения вернется 0? при вводе значения больше 10 вернется 0? Если вводится уровень громкости
-        // от 0 до 10 включительно, то он присваивается переменной currentVolume
-
-        if (newCurrentVolume < 0) {
-            return;
-        }
-        if (newCurrentVolume > 100) {
-            return;
-        }
-        currentVolume = newCurrentVolume;
-    }
-
-    public void next() {  // метод ничего не возвращает, поэтому void. Ничего не принимает, так как радио само знает, какой номер станции у нее текущий
-        //Метод переключения номера станции на один вверх. Вызов метода увеличивает переменную currentNumber на единицу во всех случаях, за исключением того,
-        // когда currentNumber =9, в этом случае возвращается 0
-
-        if (currentNumber == getMaxNumber()) {
-            currentNumber = 0;
-        } else
-            currentNumber = currentNumber + 1;
-    }
-
-    public void prev() {  // метод ничего не возвращает, поэтому void. Ничего не принимает, так как радио само знает, какой номер станции у нее текущий
-        //Метод переключения номера станции на один вниз. Вызов метода уменьшает переменную currentNumber на единицу во всех случаях, за исключением того,
-        // когда currentNumber = 0, в этом случае возвращается 9
-
-        if (currentNumber == 0) {
-            currentNumber = getMaxNumber();
-        } else
-            currentNumber = currentNumber - 1;
-    }
-
-    public void increaseVolume() {  // метод ничего не возвращает, поэтому void. Ничего не принимает, так как радио само знает,
-        // какой уровень громкости у него текущий
-        //Метод переключения уровня громкости на один вверх. Вызов метода увеличивает переменную currentVolume на единицу во всех случаях,
-        // когда текущая громкость меньше 100, если текущая громкость больше 100 ничего не произойдет.
-        if (currentVolume < 100) {
-            currentVolume++;
+    public void setCurrentNumber(int newCurrentNumber) {
+        if (newCurrentNumber >= 0) {
+            if (newCurrentNumber <= this.getMaxNumber()) {
+                this.currentNumber = newCurrentNumber;
+            }
         }
     }
 
-    public void decreaseVolume() {  // метод ничего не возвращает, поэтому void. Ничего не принимает, так как радио само знает, какой уровень громкости у него текущий
-        //Метод переключения уровня громкости на один вниз. Вызов метода уменьшает переменную currentVolume на единицу во всех случаях, когда текущая громкость больше 1, если текущая громкость меньше 1 ничего не произойдет.
-        if (currentVolume > 1) {
-            currentVolume = currentVolume - 1;
+    public void setCurrentVolume(int newCurrentVolume) {
+        if (newCurrentVolume >= 0) {
+            if (newCurrentVolume <= 100) {
+                this.currentVolume = newCurrentVolume;
+            }
+        }
+    }
+
+    public void next() {
+        if (this.currentNumber == this.getMaxNumber()) {
+            this.currentNumber = 0;
+        } else {
+            ++this.currentNumber;
         }
 
     }
 
+    public void prev() {
+        if (this.currentNumber == 0) {
+            this.currentNumber = this.getMaxNumber();
+        } else {
+            --this.currentNumber;
+        }
+
+    }
+
+    public void increaseVolume() {
+        if (this.currentVolume < 100) {
+            ++this.currentVolume;
+        }
+
+    }
+
+    public void decreaseVolume() {
+        if (this.currentVolume > 1) {
+            --this.currentVolume;
+        }
+
+    }
 }
-
-//    Требования к работе с радиостанциями:
-//
-//       //* Можно задавать количество радиостанций при создании объекта, по умолчанию — 10.
-//       //* Номер текущей радиостанции изменяется в пределах от 0 до количества радиостанций не включительно. То есть если станций 10, то номер последней — 9.
-//       //* Если текущая радиостанция — максимальная, и клиент нажал на кнопку next, следующая, на пульте, то текущей должна стать нулевая.
-//       //* Если текущая радиостанция — 0, и клиент нажал на кнопку prev, предыдущая, на пульте, то текущей должна стать максимальная.
-//       //* Всё так же должен присутствовать сеттер текущей станции.
-//       //* Теперь объекты радио в своём поле будут хранить и количество станций, заданное при создании объекта радио. Для этого вам понадобится создать
-//       свой конструктор для класса Radio, принимающий параметром желаемое количество радиостанций и сохраняющий это значение у себя в поле.
-//       Ещё один конструктор потребуется без параметров, чтобы, если пользователь нашего класса не захотел указывать количество радиостанций,
-//       мы бы выставили их количество в 10 штук, как указано в требованиях, «по умолчанию — 10».
-//
-//        // Внимание: конструктором с параметром задаётся именно количество радиостанций, а не номер максимальной, это разные вещи — если количество станций,
-//        например, 30, то последней будет номер 29, так как нумеруем мы с нуля.
-//
-//        Требования к работе с уровнем громкости звука:
-//
-//        //* клиент должен иметь возможность увеличивать и уменьшать уровень громкости звука в пределах от 0 до 100;
-//       // * если уровень громкости звука достиг максимального значения, то дальнейшее нажатие на + не должно ни к чему приводить;
-//       //* если уровень громкости звука достиг минимального значения, то дальнейшее нажатие на - не должно ни к чему приводить.
