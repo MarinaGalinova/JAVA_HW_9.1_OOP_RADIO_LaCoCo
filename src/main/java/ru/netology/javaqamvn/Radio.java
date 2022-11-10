@@ -5,7 +5,6 @@ public class Radio {
     private int currentVolume;
     private int size = 10;
     private int maxNumber;
-
     public Radio() {
     }
     public Radio(int size) {

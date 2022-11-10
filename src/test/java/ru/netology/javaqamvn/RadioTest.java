@@ -10,7 +10,6 @@ public class RadioTest {
 
         Assertions.assertEquals(100, station.getCurrentSize());
     }
-
     @Test
     public void shouldSetRightDefaultSize() {
         Radio station = new Radio();
