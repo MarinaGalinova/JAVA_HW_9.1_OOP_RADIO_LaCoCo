@@ -8,23 +8,18 @@ public class Radio {
 
     public Radio() {
     }
-
     public Radio(int size) {
         this.size = size;
     }
-
     public int getMaxNumber() {
         return this.maxNumber = this.size - 1;
     }
-
     public int getCurrentSize() {
         return this.size;
     }
-
     public int getCurrentNumber() {
         return this.currentNumber;
     }
-
     public int getCurrentVolume() {
         return this.currentVolume;
     }
