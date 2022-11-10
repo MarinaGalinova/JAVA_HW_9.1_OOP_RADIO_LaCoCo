@@ -39,7 +39,6 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
     @Test
     public void shouldSetRightNumberSize100() {
         Radio station = new Radio(100);
@@ -50,7 +49,6 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
     @Test
     public void shouldntSetNegativeNumberDefaultSize() {
         Radio station = new Radio();
