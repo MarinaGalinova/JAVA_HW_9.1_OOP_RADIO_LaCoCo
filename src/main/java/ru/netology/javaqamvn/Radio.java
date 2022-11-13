@@ -5,7 +5,6 @@ public class Radio {
     private int currentVolume;
     private int size = 10;
     private int maxNumber;
-
     public Radio() {
     }
     public Radio(int size) {
@@ -31,15 +30,13 @@ public class Radio {
             }
         }
     }
-
-    public void setCurrentVolume(int newCurrentVolume) {
+   public void setCurrentVolume(int newCurrentVolume) {
         if (newCurrentVolume >= 0) {
             if (newCurrentVolume <= 100) {
                 this.currentVolume = newCurrentVolume;
             }
         }
     }
-
     public void next() {
         if (this.currentNumber == this.getMaxNumber()) {
             this.currentNumber = 0;
@@ -48,7 +45,6 @@ public class Radio {
         }
 
     }
-
     public void prev() {
         if (this.currentNumber == 0) {
             this.currentNumber = this.getMaxNumber();
@@ -57,14 +53,12 @@ public class Radio {
         }
 
     }
-
     public void increaseVolume() {
         if (this.currentVolume < 100) {
             ++this.currentVolume;
         }
 
     }
-
     public void decreaseVolume() {
         if (this.currentVolume > 1) {
             --this.currentVolume;
